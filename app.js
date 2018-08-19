@@ -1,0 +1,12 @@
+const Koa = require('koa')
+const app = new Koa()
+const router = require('./router/index')
+const middleware = require('./middleware')
+const config = require('./config')
+// require('./test')
+middleware(app)
+router(app)
+app.listen(config.port, () => {
+    console.log( process.env.NODE_ENV )
+    console.log(`server is running at http://localhost:${config.port}`)
+})
