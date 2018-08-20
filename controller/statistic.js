@@ -1,18 +1,18 @@
 const db = require('../databases/redis')
 module.exports = {
     join: async function (ctx, next) {
-        // await ctx.render("home/index", {title: "iKcamp欢迎您"})
+
 
         var ip = ctx.request.body.ip
         var activityName = ctx.request.body.activityName
-
+     
         var key = activityName + 'join'
         var id = ip + activityName
+        console.log('ip'+ip)
         var result = await db.get(id)
         var result1 = await db.get(key)
         if (result1) {
             if (result) {
-              
                 ctx.send('已统计')
             } else {
                 await db.set(id, 1)

@@ -2,7 +2,7 @@ const path = require("path");
 const fs = require('fs');
 module.exports = function (opts) {
   let { app, rules = []} = opts
-
+ 
   // 如果参数缺少实例 app，则抛出错误
   if (!app) {
     throw new Error("the app params is necessary!")
@@ -10,7 +10,7 @@ module.exports = function (opts) {
   // 提取出 app 实例对象中的属性名
   const appKeys = Object.keys(app)
   rules.forEach((item) => {
-    let { folder, name} = item
+    let {folder, name} = item
     // 如果 app 实例中已经存在了传入过来的属性名，则抛出错误
     if (appKeys.includes(name)) {
       throw new Error(`the name of ${name} already exists!`)
